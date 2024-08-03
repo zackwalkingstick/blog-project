@@ -1,0 +1,4 @@
+<h1>Feed</h1>
+<% @entries.each do |item|%>
+  <p style="border: 2px solid #333; padding: 20px;"><%=item.to_json%><p>
+<% end %>
