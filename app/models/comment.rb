@@ -5,5 +5,5 @@ class Comment < ApplicationRecord
   validates :description, presence: true
 
   belongs_to :creator, class_name: 'User'
-  belongs_to :entry
+  belongs_to :entry, inverse_of: :comments
 end

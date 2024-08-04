@@ -17,8 +17,7 @@ class Entry < ApplicationRecord
   belongs_to :blog
   belongs_to :creator, class_name: 'User'
 
-  has_many :comments, dependent: :destroy, inverse_of: :comment
-  has_and_belongs_to_many :tags
+  has_many :comments, dependent: :destroy, inverse_of: :entry
 
   before_save :generate_slug
 
