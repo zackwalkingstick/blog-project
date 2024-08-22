@@ -14,6 +14,7 @@ class EntriesController < ApplicationController
   def show
     respond_to do |format|
       if @entry.present?
+        format.html { render :show, location: @entry }
         format.json { render json: @entry, status: :ok }
       end
     end

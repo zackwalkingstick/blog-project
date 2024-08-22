@@ -1,7 +1,8 @@
 <p id="notice"><%= notice %></p>
-<p><%=@entry.title%></p>
+<h2><%=@entry.title%></h2>
 <br>
-<p><%=@entry.content%></p>
+<p>Post Content</p>
+<p><%=@entry.content['text']%></p>
 
 <%= link_to 'Edit', edit_entry_path(@entry) %> |
 <%= link_to 'Back', entries_path %>

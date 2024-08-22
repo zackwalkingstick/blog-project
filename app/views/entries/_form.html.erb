@@ -1,4 +1,12 @@
-<%= form_with(model: entry) do |form| %>
+<%= form_with(model: entry) do |f| %>
+  <%= f.label :title %>
+  <br>
+  <%= f.text_field :title %>
+  <br>
+  <%= f.label :text %>
+  <br>
+  <%= f.text_area(:text, size: '50x10', value: @entry.content.present? ? @entry.content['text'] : '') %>
+
   <% if entry.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(entry.errors.count, "error") %> prohibited this entry from being saved:</h2>
@@ -12,6 +20,6 @@
   <% end %>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= f.submit %>
   </div>
 <% end %>
