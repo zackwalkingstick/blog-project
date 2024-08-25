@@ -1,10 +1,16 @@
 # lib/custom_logger.rb
 
-require 'singleton'
 require 'logger'
 
 class Clogger
-  include Singleton
+  @instance = nil
+
+  # Ensure that the logger is only initialized once
+  def self.instance
+    @instance ||= new
+  end
+
+  private_class_method :new
 
   def initialize; end
 
