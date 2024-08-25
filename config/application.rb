@@ -32,6 +32,8 @@ module BlogApi
     # Don't generate system test files.
     config.generators.system_tests = nil
 
-    config.hosts << 'blog_api.test'
+    config.hosts << "blog-project.test"
+
+    config.autoload_paths += %W(#{config.root}/lib)
   end
 end

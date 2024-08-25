@@ -43,6 +43,7 @@ class EntriesController < ApplicationController
     Rails.logger.info @entry.inspect
     respond_to do |format|
       if @entry.save
+        Clogger.instance.info("Entry Created | #{@entry.id} | #{@entry.title} | #{@entry.content['text'] }")
         format.html { redirect_to entry_url(@entry), notice: "Entry was successfully created." }
         format.json { render :show, status: :created, location: @entry }
       else
@@ -59,9 +60,11 @@ class EntriesController < ApplicationController
 
     respond_to do |format|
       if @entry.save
+        Clogger.instance.info("Entry Updated | #{@entry.id} | #{@entry.title} | #{@entry.content['text'] }")
         format.html { redirect_to entry_url(@entry), notice: "Entry was successfully updated." }
         format.json { render :show, status: :ok, location: @entry }
       else
+        Clogger.instance.info("Entry Update Failed | #{@entry.id}")
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @entry.errors, status: :unprocessable_entity }
       end
@@ -73,6 +76,7 @@ class EntriesController < ApplicationController
     @entry.destroy
 
     respond_to do |format|
+      Clogger.instance.info("Entry Destroyed | #{@entry.id} | 👋")
       format.html { redirect_to entries_url, notice: "Entry was successfully destroyed." }
       format.json { head :no_content }
     end
